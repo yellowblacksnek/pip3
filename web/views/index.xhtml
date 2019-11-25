@@ -25,7 +25,7 @@
             <div class="headerText name">Венщиков Марат, P3201</div>
             <div class="headerText variant"> Вариант 20115</div>
             <h:form>
-                <h:commandButton styleClass="btn backBtn" value="Back" action="start?faces-redirect=true"/>
+                <h:commandButton styleClass="btn backBtn" value="Back" action="success"/>
             </h:form>
         </div>
 
@@ -84,6 +84,7 @@
 <!--            <h:messages id="messages" showSummary="true" showDetail="false"/>-->
 <!--        </div>-->
         <div class="rect">
+
             <h:messages id="messages" showSummary="true" showDetail="false"/>
             <h:outputText id="debug" value="#{ResultBean.debug}"/>
             <h:form id="form" action="controller" method="GET">
@@ -132,7 +133,7 @@
                             value="#{ResultBean.r}"
                             type="hidden"
                             required="true"
-                            requiredMessage="Нужно указать радиус!"
+                            requiredMessage="Нужно указать радиус! (обязательно)"
                             validatorMessage="Недопустимое значение радиуса!">
                         <f:validateLongRange minimum="1" maximum="5"/>
                     </p:inputText>
@@ -142,6 +143,11 @@
                     <h:commandLink styleClass="inputButton" value="4"/>
                     <h:commandLink styleClass="inputButton" value="5"/>
                 </div>
+<!--                <h:panelGroup id="messages">-->
+<!--                <h:message id="xMes" for="x" showSummary="true" showDetail="false"/><br/>-->
+<!--                <h:message id="yMes" for="y" showSummary="true" showDetail="false"/><br/>-->
+<!--                <h:message id="rMes" for="r" showSummary="true" showDetail="false"/>-->
+<!--                </h:panelGroup>-->
                 <div id="submitRow">
                     <h:commandButton
                             id="submitBtn"
@@ -149,7 +155,7 @@
                             action="#{ResultBean.save}"
                             update="form messages"
                             value="Проверить вхождение">
-                        <f:ajax execute="@form" render="form historyTable messages debug" onevent="onSend"/>
+                        <f:ajax execute="@form" render="form historyTable debug messages" onevent="onSend"/>
                     </h:commandButton>
                     <h:outputScript rendered="#{facesContext.validationFailed}">
                         onError();

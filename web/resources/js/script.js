@@ -236,6 +236,7 @@ function imageClicked(event) {
     let val = document.getElementById('form:r').getAttribute('value');
     if(!val) {
         document.getElementById('form:r').setCustomValidity('Нужен радиус!');
+        document.getElementById('form:submitBtn').click();
         return;
     }
 
