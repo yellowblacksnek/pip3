@@ -10,7 +10,8 @@ import java.util.List;
 public class Collection {
     public List<Point> getPoints(){
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        return session.createCriteria(Point.class).list();
+        List<Point> points = session.createCriteria(Point.class).list();
+        return points;
     }
 
     public void setPoints(List<Point> points) {}

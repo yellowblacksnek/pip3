@@ -155,15 +155,16 @@
                             action="#{ResultBean.save}"
                             update="form messages"
                             value="Проверить вхождение">
-                        <f:ajax execute="@form" render="form historyTable debug messages" onevent="onSend"/>
+                        <f:ajax execute="@form" render="form historyTable debug messages histEmpty" onevent="onSend"/>
                     </h:commandButton>
+                    <p:graphicImage id="loading" styleClass="hide loading" library="images" name="load.gif" style="height: 30px; margin-left: 10px;"/>
                     <h:outputScript rendered="#{facesContext.validationFailed}">
                         onError();
                     </h:outputScript>
-<!--                    <h:outputScript rendered="#{!facesContext.validationFailed}">-->
-<!--                        document.getElementById('form:x').setAttribute("value", "");-->
-<!--                        document.getElementById('form:y').setAttribute("value", "");-->
-<!--                    </h:outputScript>-->
+                    <h:outputScript rendered="#{!facesContext.validationFailed}">
+                        document.getElementById('form:x').setAttribute("value", "");
+                        document.getElementById('form:y').setAttribute("value", "");
+                    </h:outputScript>
                     <h:panelGroup rendered="#{ResultBean.match and !facesContext.validationFailed}">
                         <span class="hide alert" id="matchMessage" style="color:#008000;">Попадание!</span>
                     </h:panelGroup>
@@ -176,7 +177,7 @@
 
         <div class="rect" id="historyRect">
             <button type="button" class="btn extendBtn" id="histBtn"
-                    onclick="histBtnPressed(); makeRowsClickable();">История
+                    onclick="histBtnPressed();">История
             </button>
             <span class="hide alert" id="histMessage">История пуста.</span>
             <div id="histWrap">
@@ -208,6 +209,11 @@
                             </h:panelGroup>
                         </h:column>
                     </h:dataTable>
+                    <h:panelGroup id="histEmpty">
+                        <div style="text-align: center">
+                            <h:outputText  value="История пуста" rendered="#{empty Collection.points}"/>
+                        </div>
+                    </h:panelGroup>
                 </div>
             </div>
         </div>

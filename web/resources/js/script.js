@@ -246,14 +246,14 @@ function imageClicked(event) {
     relativeX *= 2/3;
     relativeY *= 2/3;
 
-    console.log(relativeX, relativeY);
+    //console.log(relativeX, relativeY);
 
     let width = $('#imageSvg').width() * 2/3;
     let height = $('#imageSvg').height() * 2/3;
     let r = parseFloat(val.replace(',','.'));
     let x = (relativeX - (width / 2)) / 70;
     let y = ((height / 2) - relativeY) / 70;
-    console.log(x,y);
+    //console.log(x,y);
     document.getElementById('form:x').setAttribute("value", (x * r).toFixed(4));
     document.getElementById('form:y').setAttribute("value", (y * r).toFixed(4));
     // setFieldValue("x", (x * r).toFixed(2));
@@ -304,6 +304,7 @@ function drawDots(radius) {
     // }
 
     let table = $('#historyTable').get()[0];
+    if(!table) return;
     for(let i = 1, row; row = table.rows[i]; ++i) {
 
         let x = parseFloat(row.cells[0].innerText);
@@ -386,18 +387,21 @@ function changeGraphLegend(id_number, value) {
 function onSend(data) {
     var status = data.status; // Can be "begin", "complete" or "success".
 
+    if(status == "begin") {
+        $(document.getElementById('form:loading')).stop(true, true).fadeIn(100);
+        $('#matchMessage').stop(true, true).fadeOut( 0 );
+    }
     if(status == "success") {
+        $(document.getElementById('form:loading')).stop(true, true).fadeOut(100);
         redrawDots();
-        console.log("redrawn");
+        $('#matchMessage').stop(true, true).fadeIn( 200 ).delay( 3000 ).fadeOut( 200 );
     }
 
     fixButtons();
-    updateSliderVal();
-    $('#matchMessage').fadeIn( 200 ).delay( 3000 ).fadeOut( 200 );
 }
 
 function onError() {
-    console.log("error");
+    //console.log("error");
     let radius = document.getElementById('form:r').getAttribute('value');
     if(!radius) {
         $('.inputButton').addClass('error');
@@ -409,7 +413,7 @@ function onError() {
 }
 
 function fixButtons() {
-    console.log("fixButtons");
+    //console.log("fixButtons");
     $('a.inputButton').each(function () {
         let link = $(this).get()[0];
         let value = link.innerHTML;
@@ -431,11 +435,4 @@ function fixButtons() {
             redrawDots()
         }
     });
-}
-
-function updateSliderVal() {
-    let value = document.getElementById('form:x').getAttribute('value');
-    console.log("updateSliderVal");
-    // if(!value) return;
-    // document.getElementById('form:x_text').innerText = value;
 }

@@ -109,6 +109,7 @@ public class Point implements Serializable {
                 "arc:" + AreaUtils.arc.contains(x,y) +
                 "poly:" + AreaUtils.poly.contains(realX,realY) +
                 "rect:" + AreaUtils.rect.contains(realX, realY);
+        this.debug = "";
         System.out.println(toString());
         System.err.println(toString());
         DatabaseOperations dbObj = new DatabaseOperations();
