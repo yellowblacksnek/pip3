@@ -1,0 +1,201 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+    background: #ffffff;
+    background-image: url("images/tumblr_npxmmtsXzo1uqvegzo1_500.gif"), url("images/fLzHjY3F2Kk.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed, fixed;
+    background-size: 20%, cover;
+    background-position: bottom right, center;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+/* @media screen and (min-width: 500px) {
+    #background {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+}   */
+
+.mainTable {
+    margin: auto auto;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    border-spacing: 10px;
+    vertical-align: top;
+}
+
+.rect {
+    margin: 0 auto;
+    padding: 10px;
+    width: 260px;
+    min-width: 240px;
+    max-width: 300px;
+    mix-blend-mode: hard-light;
+    border-radius: 5px;
+    background-color: rgba(205, 205, 205, 1);
+    vertical-align: top;
+}
+
+.headerText {
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+.headerRect {
+    padding: 10px;
+    max-width: 205px;
+}
+
+ .additional {
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+} 
+
+.image {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 0px auto;
+}
+
+.responseTable {
+    margin: auto auto;
+}
+
+.fixer {
+    display: inline-block;
+    width: 100%;
+    max-width:280px;
+}
+
+/* .row {
+    display: block;
+    width: 100%;
+    min-width: 200px;
+    max-width: 360px;
+} */
+
+.btn {
+    height: 25px;
+    background-color: rgba(255, 255, 255, 1);
+    border: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    color: rgba(0,0,0,0.9);
+
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    margin: 10px 0px;
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#okBtn {
+    padding: 1px 6px;
+}
+
+.extendBtn {
+    position: relative;
+    margin: 0 0;
+    width: 100px;
+    height: 25px;
+    text-align: left;
+}
+
+.extendBtn::after {
+    position: absolute;
+    right: 5px;
+    display: inline-block;
+    content: "▲";
+    color: grey;
+    transform: rotateX(180deg);
+    transition-duration: .3s;
+}
+
+.active.extendBtn::after {
+    transform: rotateX(0deg);
+    transition-duration: .3s;
+}
+
+.textBtn {
+    border: none;
+    background-color: rgba(0,0,0,0);
+    font-size: 14px;
+}
+
+.hide {
+    display: none;
+}
+
+#historyRect {
+    padding: 10px;
+    max-height: 45px;
+    overflow: hidden;
+    border-spacing: 0;
+    -webkit-transition: max-height 300ms;
+    -moz-transition: max-height 300ms;
+    transition: max-height 300ms;
+}
+
+.active#historyRect {
+    max-height: 400px;
+    -webkit-transition: max-height 300ms;
+    -moz-transition: max-height 300ms;
+    transition: max-height 300ms;
+}
+
+#histWrap {
+    overflow: hidden;
+    max-height: 0px;
+    -webkit-transition: max-height 300ms;
+    -moz-transition: max-height 300ms;
+    transition: max-height 300ms;
+}
+
+.active#histWrap {
+    max-height: 280px;
+    -webkit-transition: max-height 300ms;
+    -moz-transition: max-height 300ms;
+    transition: max-height 300ms;
+}
+
+#historyTableWrap {
+    margin-top: 10px;
+    overflow-y: auto;
+    max-height: 200px;
+    max-width: 300px;
+    //▲▼
+}
+
+#historyTableWrap tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+#historyTableWrap table {
+    border-spacing: 0px;
+}
+
+/* .alert {
+    margin-left: 10px;
+} */

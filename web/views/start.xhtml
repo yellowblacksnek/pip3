@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Третья лаба по вебу, драсте</title>
+    <h:outputStylesheet name="styles.css" library="css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet"/>
+</h:head>
+
+<h:body>
+    <div class="main animated zoomIn fast">
+
+        <div class="rect">
+            <div class="headerText name">Венщиков Марат, P3201</div>
+            <div class="headerText variant"> Вариант 20115</div>
+        </div>
+
+        <div class="rect startRect">
+            <h3>Стартовая страница</h3>
+<!--            <h:outputLink styleClass="inputButton" value="views/index.xhtml">Вступить в ШУЕ!</h:outputLink>-->
+            <div>
+                Текущее время (каждые 13 секунд):
+            </div>
+            <div id="clock">
+
+            </div>
+            <h:outputScript>
+                function setClock() {
+                    let date = new Date();
+                    var options = {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: 'numeric',
+                        second: 'numeric'
+                    };
+                    let text = date.toLocaleString("ru", options);
+                    document.getElementById('clock').innerHTML = text;
+                }
+                setClock();
+                setInterval(setClock, 13000);
+            </h:outputScript>
+        <h:form>
+            <h:commandButton styleClass="btn" value="Вступить" action="index?faces-redirect=true"/><br/>
+            <h:commandButton styleClass="btn" value="В" action="index?faces-redirect=true"/><br/>
+            <h:commandButton styleClass="btn" value="ШУЕ!" action="index?faces-redirect=true"/>
+        </h:form>
+        </div>
+
+    </div>
+</h:body>
+</html>

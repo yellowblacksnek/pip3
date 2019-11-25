@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+
+        <navigation-case>
+            <from-outcome>nextPage</from-outcome>
+            <to-view-id>/views/index.xhtml</to-view-id>
+        </navigation-case>
+
+    </navigation-rule>
+
+    <managed-bean>
+        <managed-bean-name>ResultBean</managed-bean-name>
+        <managed-bean-class>ru.yellowblacksnek.beans.Point</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>x</property-name>
+            <value></value>
+        </managed-property>
+        <managed-property>
+            <property-name>y</property-name>
+            <value></value>
+        </managed-property>
+        <managed-property>
+            <property-name>r</property-name>
+            <value></value>
+        </managed-property>
+        <managed-property>
+            <property-name>match</property-name>
+            <value></value>
+        </managed-property>
+        <managed-property>
+            <property-name>debug</property-name>
+            <value></value>
+        </managed-property>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>CheckerBean</managed-bean-name>
+        <managed-bean-class>ru.yellowblacksnek.beans.CheckerBean</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>Collection</managed-bean-name>
+        <managed-bean-class>ru.yellowblacksnek.beans.Collection</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+        <managed-property>
+            <property-name>points</property-name>
+            <value></value>
+        </managed-property>
+    </managed-bean>
+  
+</faces-config>

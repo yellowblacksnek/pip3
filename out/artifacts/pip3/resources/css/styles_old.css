@@ -1,0 +1,225 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.background {
+    //background: #00AF64;
+    background: #ffffff;
+    background-image: url("tumblr_npxmmtsXzo1uqvegzo1_500.gif"), url("815de09e94a58cbff20eec6c9d62d06c_183011_1567975731.gif");
+    background-repeat: no-repeat;
+    background-attachment: fixed, fixed;
+    //background-size:100%;
+    background-size: 20%, cover;
+    background-position: bottom right, center;
+}
+
+@media screen and (min-width: 600px) {
+    .background {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+}
+
+header {
+    margin-left: 20px;
+    padding: 10px 10px 10px 21px;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: rgb(0, 0, 0);
+    width: 300px
+}
+
+main {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+.rect {
+	font-size: 16px;
+    margin: 10px auto;
+    padding: 20px;
+    width: 100%;
+    min-width: 240px;
+    max-width: 400px;
+    mix-blend-mode: hard-light;
+    border-radius: 5px;
+    background-color: rgba(205, 205, 205, 0.7);
+}
+
+.imageRect {
+    width: 240px;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    margin: 0px 0px;
+}
+
+#historyRect {
+    padding: 10px;
+    height: 50px;
+    overflow: hidden;
+    -webkit-transition:height 300ms;
+    transition:height 300ms;
+}
+
+.block {
+	margin: 10px 0px;
+}
+
+.btn {
+    height: 25px;
+    background-color: rgba(255, 255, 255, 1);
+    border: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    color: rgba(0,0,0,0.9);
+
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    margin: 10px 0px;
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.extendBtn {
+    position: relative;
+    margin: 0 0;
+    width: 100px;
+    height: 25px;
+    text-align: left;
+}
+
+.extendBtn::after {
+    position: absolute;
+    right: 5px;
+    display: inline-block;
+    content: "▲";
+    color: grey;
+    transform: rotateX(180deg);
+    transition-duration: .3s;
+}
+
+.active.extendBtn::after {
+    transform: rotateX(0deg);
+    transition-duration: .3s;
+}
+
+.textBtn {
+    border: none;
+    background-color: rgba(0,0,0,0);
+    font-size: 14px;
+}
+
+.hide {
+    display: none;
+}
+
+.alert {
+    margin-left: 10px;
+}
+
+#tableWrap {
+    margin-top: 10px;
+    overflow-y: auto;
+    max-height: 250px;
+    //▲▼
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+table {
+    border-spacing: 0px;
+}
+
+/* .arrow-wrap {
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+}
+
+.arrow-icon {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    display: block;
+    padding: 0;
+    margin: 0 0;
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.left-bar {
+  position: absolute;
+  background-color: transparent;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 5px;
+  display: block;
+  transform: rotate(35deg);
+  float: right;
+  border-radius: 2px;
+}
+.left-bar:after {
+  content: "";
+  background-color: grey;
+  width: 16px;
+  height: 5px;
+  display: block;
+  float: right;
+  border-radius: 6px 10px 10px 6px;
+  transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+  z-index: -1;
+}
+
+.right-bar {
+  position: absolute;
+  background-color: transparent;
+  top: 0px;
+  left: 12px;
+  width: 16px;
+  height: 5px;
+  display: block;
+  transform: rotate(-35deg);
+  float: right;
+  border-radius: 2px;
+}
+.right-bar:after {
+  content: "";
+  background-color: grey;
+  width: 16px;
+  height: 5px;
+  display: block;
+  float: right;
+  border-radius: 10px 6px 6px 10px;
+  transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+  z-index: -1;
+}
+
+.open .left-bar:after {
+  transform-origin: center center;
+  transform: rotate(-70deg);
+}
+.open .right-bar:after {
+  transform-origin: center center;
+  transform: rotate(70deg);
+} */

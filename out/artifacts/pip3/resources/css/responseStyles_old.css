@@ -1,0 +1,137 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.background {
+    background: #3caea3;   
+}
+
+@media screen and (min-width: 600px) {
+    .background {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+}
+
+header {
+    margin-left: 20px;
+    padding: 10px 10px 10px 21px;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: rgb(0, 0, 0);
+    //width: 300px
+}
+
+main {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 100
+    font-size: 16px;
+    margin: 10px auto;
+    padding: 20px;
+    width: 100%;
+    min-width: 240px;
+    max-width: 400px;
+    mix-blend-mode: hard-light;
+    border-radius: 5px;
+    background-color: rgba(205, 205, 205, 0.85);
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    margin: 10px auto;
+    margin-bottom: 0px;
+}
+
+.tableResponse {
+    margin: 0 auto;
+}
+
+#historyRect {
+    padding: 10px;
+    height: 45px;
+    overflow: hidden;
+    -webkit-transition:height 300ms;
+    transition:height 300ms;
+}
+
+.block {
+    margin: 10px 0px;
+}
+
+.btn {
+    height: 25px;
+    background-color: rgba(255, 255, 255, 1);
+    border: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    color: rgba(0,0,0,0.9);
+
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    margin: 10px 0px;
+}
+
+.btn:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+}
+
+#okBtn {
+    padding: 1px 6px;
+}
+
+.extendBtn {
+    position: relative;
+    margin: 0 0;
+    width: 100px;
+    height: 25px;
+    text-align: left;
+}
+
+.extendBtn::after {
+    position: absolute;
+    right: 5px;
+    display: inline-block;
+    content: "▲";
+    color: grey;
+    transform: rotate(180deg);
+    transition-duration: .3s;
+}
+
+ .active.extendBtn::after {
+    transform: rotate(0deg);
+     transition-duration: .3s;
+}
+
+.textBtn {
+    border: none;
+    background-color: rgba(0,0,0,0);
+    font-size: 14px;
+}
+
+.hide {
+    display: none;
+}
+
+.alert {
+    margin-left: 10px;
+}
+
+#tableWrap {
+    margin-top: 10px;
+    overflow-y: auto;
+    max-height: 250px;
+}
