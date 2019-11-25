@@ -1,0 +1,17 @@
+body {
+    background: #ffffff;
+    background-image: url("#{resource['images/margo.png']}"),
+    linear-gradient(
+            .25turn,
+            #23074d,
+            #cc5333
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed, fixed;
+    background-size: 40%, cover;
+    background-position: bottom left, center;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    margin: auto auto;
+}
