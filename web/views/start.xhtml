@@ -11,6 +11,7 @@
     <h:outputStylesheet name="styles.css" library="css"/>
     <h:outputStylesheet name="start.css" library="css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet"/>
+    <h:outputScript name="clock.js" library="js"/>
 </h:head>
 
 <h:body>
@@ -28,22 +29,11 @@
                 Текущее время (каждые 13 секунд):
             </div>
             <div id="clock">
-
+                <div id="date"></div>
+                <div id="time"></div>
             </div>
+<!--            <canvas id="clock" width="300" height="200"/>-->
             <h:outputScript>
-                function setClock() {
-                    let date = new Date();
-                    var options = {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                        hour: 'numeric',
-                        minute: 'numeric',
-                        second: 'numeric'
-                    };
-                    let text = date.toLocaleString("ru", options);
-                    document.getElementById('clock').innerHTML = text;
-                }
                 setClock();
                 setInterval(setClock, 13000);
             </h:outputScript>
