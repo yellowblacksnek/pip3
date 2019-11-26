@@ -4,22 +4,28 @@ import ru.yellowblacksnek.AreaUtils;
 import ru.yellowblacksnek.db.DatabaseOperations;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Objects;
 
-@ManagedBean
+@Entity
+@Table(name="points")
 public class Point implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
     private int id;
+    @Column(name = "x")
     private String x;
+    @Column(name = "y")
     private String y;
+    @Column(name = "r")
     private String r;
+    @Column(name = "match")
     private Boolean match;
-    private String debug;
 
     public String getX() {
         return x;
@@ -51,14 +57,6 @@ public class Point implements Serializable {
 
     public void setMatch(Boolean match) {
         this.match = match;
-    }
-
-    public void setDebug(String debug) {
-        this.debug = debug;
-    }
-
-    public String getDebug() {
-        return debug;
     }
 
     @Override
@@ -104,12 +102,6 @@ public class Point implements Serializable {
                 AreaUtils.arc.contains(x,y) ||
                 AreaUtils.poly.contains(realX,realY) ||
                 AreaUtils.rect.contains(realX,realY));
-        this.debug = "x:" + x + " y:" + y +
-                "realX:" + realX + " realY:" + realY +
-                "arc:" + AreaUtils.arc.contains(x,y) +
-                "poly:" + AreaUtils.poly.contains(realX,realY) +
-                "rect:" + AreaUtils.rect.contains(realX, realY);
-        this.debug = "";
         System.out.println(toString());
         System.err.println(toString());
         DatabaseOperations dbObj = new DatabaseOperations();

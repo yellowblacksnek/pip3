@@ -8,7 +8,9 @@
     <property name="connection.driver_class">org.postgresql.Driver</property>
     <property name="connection.username">postgres</property>
     <property name="connection.password">admin</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="show_sql">true</property>
-    <mapping resource="ru/yellowblacksnek/db/Point.hbm.xml" />
+<!--    <mapping resource="ru/yellowblacksnek/db/Point.hbm.xml" />-->
+    <mapping class="ru.yellowblacksnek.beans.Point"/>
   </session-factory>
 </hibernate-configuration>
