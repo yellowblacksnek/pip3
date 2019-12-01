@@ -10,7 +10,7 @@ import java.util.List;
 public class DatabaseOperations {
 
     // Method To Add New Student Details In Database
-    public String addResultInDb(Point point) {
+    public String addResultInDb(PointEntity point) {
         String debug = new String();
 
         Transaction trans=null;
@@ -18,9 +18,9 @@ public class DatabaseOperations {
         try
         {
             boolean unique = true;
-            List<Point> points = session.createCriteria(Point.class).list();
+            List<PointEntity> points = session.createCriteria(PointEntity.class).list();
             debug = point.toString() + '\n' + points.toString();
-            for(Point p : points) {
+            for(PointEntity p : points) {
                 System.out.println(p);
                 if(p.equals(point)) {
                     unique = false;
@@ -37,6 +37,7 @@ public class DatabaseOperations {
         {
             e.printStackTrace();
         }
+        session.close();
         return debug;
     }
 }

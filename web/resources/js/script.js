@@ -254,8 +254,13 @@ function imageClicked(event) {
     let x = (relativeX - (width / 2)) / 70;
     let y = ((height / 2) - relativeY) / 70;
     //console.log(x,y);
-    document.getElementById('form:x').setAttribute("value", (x * r).toFixed(4));
-    document.getElementById('form:y').setAttribute("value", (y * r).toFixed(4));
+    $(document.getElementById('form:x')).val("");
+    $(document.getElementById('form:y')).val("");
+    $(document.getElementById('form:x')).val((x * r).toFixed(4));
+    $(document.getElementById('form:y')).val((y * r).toFixed(4));
+    $("div[id*='xSlider']").slider("value", (x * r).toFixed(4));
+    $("div[id*='xSlider']").val((x * r).toFixed(4));
+    //console.log($("div[id*='xSlider']"));
     // setFieldValue("x", (x * r).toFixed(2));
     // setFieldValue("y", (y * r).toFixed(2));
 

@@ -2,6 +2,7 @@ package ru.yellowblacksnek.beans;
 
 import ru.yellowblacksnek.AreaUtils;
 import ru.yellowblacksnek.db.DatabaseOperations;
+import ru.yellowblacksnek.db.PointEntity;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -11,20 +12,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name="points")
 public class Point implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id")
     private int id;
-    @Column(name = "x")
     private String x;
-    @Column(name = "y")
     private String y;
-    @Column(name = "r")
     private String r;
-    @Column(name = "match")
     private Boolean match;
 
     public String getX() {
@@ -102,10 +94,9 @@ public class Point implements Serializable {
                 AreaUtils.arc.contains(x,y) ||
                 AreaUtils.poly.contains(realX,realY) ||
                 AreaUtils.rect.contains(realX,realY));
-        System.out.println(toString());
-        System.err.println(toString());
+        PointEntity pEntity = new PointEntity(this.x, this.y, this.r, this.match);
         DatabaseOperations dbObj = new DatabaseOperations();
-        dbObj.addResultInDb(this);
+        dbObj.addResultInDb(pEntity);
     }
 //    private static final int[] possibleR = {1, 2, 3, 4, 5};
 //    public void validateR(FacesContext context, UIComponent component, Object value) throws ValidatorException {
