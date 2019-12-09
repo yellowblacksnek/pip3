@@ -9,7 +9,6 @@ import java.util.List;
 
 public class DatabaseOperations {
 
-    // Method To Add New Student Details In Database
     public String addResultInDb(PointEntity point) {
         String debug = new String();
 
