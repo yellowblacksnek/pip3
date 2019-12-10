@@ -57,4 +57,6 @@ public class PointEntity implements Serializable {
                 Objects.equals(r, that.r) &&
                 Objects.equals(match, that.match);
     }
+
+
 }

@@ -1,42 +1,50 @@
 package ru.yellowblacksnek.db;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import ru.yellowblacksnek.beans.Point;
-
+import javax.persistence.*;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
+import javax.ejb.*;
 
+@Stateless
 public class DatabaseOperations {
 
-    public String addResultInDb(PointEntity point) {
-        String debug = new String();
+    @PersistenceContext(unitName = "unit")
+    private EntityManager em;
 
-        Transaction trans=null;
-        Session session=HibernateSessionFactory.getSessionFactory().openSession();
+    public void addResultInDb(PointEntity point) {
         try
         {
+            EntityManager em = getEntityManager();
             boolean unique = true;
-            List<PointEntity> points = session.createCriteria(PointEntity.class).list();
-            debug = point.toString() + '\n' + points.toString();
-            for(PointEntity p : points) {
-                System.out.println(p);
+            List<PointEntity> pointEntities = getPointEntities();
+            for(PointEntity p : pointEntities) {
                 if(p.equals(point)) {
                     unique = false;
                     break;
                 }
             }
             if(unique) {
-                trans = session.beginTransaction();
-                session.save(point);
-                trans.commit();
+                em.persist(point);
             }
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        session.close();
-        return debug;
+    }
+
+    public List<PointEntity> getPointEntities() {
+        EntityManager em = getEntityManager();
+        CriteriaQuery<PointEntity> criteriaQuery = em.getCriteriaBuilder().createQuery(PointEntity.class);
+        criteriaQuery.from(PointEntity.class);
+        List<PointEntity> pointEntities = em.createQuery(criteriaQuery).getResultList();
+        return pointEntities;
+    }
+
+    public EntityManager getEntityManager() {
+        if(em == null) {
+            System.out.println("EntityManager почему-то null");
+        }
+        return em;
     }
 }

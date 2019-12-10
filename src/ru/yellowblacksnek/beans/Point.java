@@ -8,9 +8,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
+
+import static ru.yellowblacksnek.Constants.DATABASEOPERATIONS_JNDI;
 
 public class Point implements Serializable {
     private int id;
@@ -95,8 +99,13 @@ public class Point implements Serializable {
                 AreaUtils.poly.contains(realX,realY) ||
                 AreaUtils.rect.contains(realX,realY));
         PointEntity pEntity = new PointEntity(this.x, this.y, this.r, this.match);
-        DatabaseOperations dbObj = new DatabaseOperations();
-        dbObj.addResultInDb(pEntity);
+        try {
+            Context context = new InitialContext();
+            DatabaseOperations dbObj = (DatabaseOperations) context.lookup(DATABASEOPERATIONS_JNDI);
+            dbObj.addResultInDb(pEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 //    private static final int[] possibleR = {1, 2, 3, 4, 5};
 //    public void validateR(FacesContext context, UIComponent component, Object value) throws ValidatorException {
