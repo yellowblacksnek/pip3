@@ -3,23 +3,17 @@ package ru.yellowblacksnek.beans;
 import ru.yellowblacksnek.db.DatabaseOperations;
 import ru.yellowblacksnek.db.PointEntity;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.*;
 
-import static ru.yellowblacksnek.Constants.DATABASEOPERATIONS_JNDI;
 
 public class Collection {
+
+    @EJB
+    private DatabaseOperations dbObj;
+
     public List<Point> getPoints() {
-        DatabaseOperations dbObj = null;
-        try {
-            Context context = new InitialContext();
-            dbObj = (DatabaseOperations) context.lookup(DATABASEOPERATIONS_JNDI);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
         List<PointEntity> pointEntities = dbObj.getPointEntities();
         List<Point> points = new ArrayList();
         for (PointEntity each : pointEntities) {
